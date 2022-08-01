@@ -1,9 +1,15 @@
 package org.tms;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
 public class Book {
 
+    @NotBlank
+    @Size(max = 20)
     private String name;
     private String genre;
+    @NotBlank
     private String author;
     private int pages;
 

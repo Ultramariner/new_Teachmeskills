@@ -2,13 +2,15 @@ package org.tms;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -35,8 +37,10 @@ public class MainController {
     }
 
     @PostMapping(path = "/add")
-    public ModelAndView add(@RequestParam("name") String name, @RequestParam("genre") String genre, @RequestParam("author") String author, @RequestParam("pages") int pages, ModelAndView modelAndView) throws SQLException, ClassNotFoundException {
-        bookService.add(name, genre, author, pages);
+    public ModelAndView add(@Valid Book book, BindingResult result, ModelAndView modelAndView) throws SQLException, ClassNotFoundException {
+        if (!result.hasErrors()) {
+            bookService.add(book);
+        }
         modelAndView.setViewName("books");
         return modelAndView;
     }
