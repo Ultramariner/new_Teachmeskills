@@ -3,6 +3,7 @@ package org.tms;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -38,8 +39,14 @@ public class MainController {
 
     @PostMapping(path = "/add")
     public ModelAndView add(@Valid Book book, BindingResult result, ModelAndView modelAndView) throws SQLException, ClassNotFoundException {
+        List<FieldError> fieldErrors;
         if (!result.hasErrors()) {
             bookService.add(book);
+        } else {
+            fieldErrors = result.getFieldErrors();
+            for (FieldError error : fieldErrors) {
+                modelAndView.addObject(error.getField(), error.getDefaultMessage());
+            }
         }
         modelAndView.setViewName("books");
         return modelAndView;

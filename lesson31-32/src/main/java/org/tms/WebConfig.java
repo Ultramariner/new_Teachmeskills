@@ -32,6 +32,6 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new LogHandlerInterceptor());
-        WebMvcConfigurer.super.addInterceptors(registry);
+//        WebMvcConfigurer.super.addInterceptors(registry);   //'org.springframework.web.servlet.config.annotation.WebMvcConfigurer' is not an enclosing class
     }
 }
