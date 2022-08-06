@@ -1,8 +1,9 @@
-package org.tms;
+package org.tms.web;
 
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.ModelAndView;
+import org.tms.ExistsException;
 
 @org.springframework.web.bind.annotation.ControllerAdvice
 public class ControllerAdvice {
