@@ -12,9 +12,11 @@
 
 <html>
 <head>
-    <title>Books</title>
+    <title><s:message code="label.header"/></title>
 </head>
 <body>
+<a href="http://localhost:8080/lesson31/book?lang=en">en</a>
+<a href="http://localhost:8080/lesson31/book?lang=ru">ru</a>
     <form method="GET" action="/lesson31/book/search">
         Name or Author:<input type="text" name="searchExpression"/>
         <input type="submit" value="Search"/>
