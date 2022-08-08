@@ -7,6 +7,8 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
 
 <html>
 <head>
@@ -14,15 +16,15 @@
 </head>
 <body>
     <form method="GET" action="/lesson31/book/search">
-        <input type="text" name="searchExpression"/>
+        Name or Author:<input type="text" name="searchExpression"/>
         <input type="submit" value="Search"/>
     </form>
     <form method="POST" action="/lesson31/book/add">
-        <input type="text" name="name" Name/>
-        <input type="text" name="genre" Genre/>
-        <input type="text" name="author" Author/>
-        <input type="number" name="pages" Pages/>
-        <input type="submit" value="Add"/>
+        Name:<input type="text" name="name"/>${name}
+        Genre:<input type="text" name="genre"/>
+        Author:<input type="text" name="author"/>${author}
+        Pages:<input type="number" name="pages"/>
+        <input type="submit" value="Add"/>${error}
     </form>
     <c:forEach items="${books}" var="book">
         <c:out value = "${book.name}"/>
