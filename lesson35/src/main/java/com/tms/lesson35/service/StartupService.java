@@ -28,5 +28,9 @@ public class StartupService {
         carRepository.add(car);
         carRepository.add(car2);
         carRepository.add(car3);
+        System.out.println(carRepository.getByNumber("234").toString());
+        carRepository.updateState("123", false);
+        System.out.println(carRepository.getAllCars().toString());
+        carRepository.remove(carRepository.getByNumber("345"));
     }
 }
