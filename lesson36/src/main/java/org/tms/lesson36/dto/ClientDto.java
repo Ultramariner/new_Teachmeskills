@@ -14,5 +14,5 @@ import java.util.List;
 public class ClientDto {
 
     private String name;
-    private List<CarDto> cars;
+    private List<Car> cars;
 }

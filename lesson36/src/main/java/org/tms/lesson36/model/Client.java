@@ -24,8 +24,9 @@ public class Client {
     @OneToMany
     private List<Car> cars;
 
-    public Client(String name) {
+    public Client(String name, List<Car> cars) {
         this.name = name;
+        this.cars = cars;
     }
 }
 

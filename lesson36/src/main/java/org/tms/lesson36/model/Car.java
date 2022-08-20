@@ -1,10 +1,6 @@
 package org.tms.lesson36.model;
 
 import lombok.*;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
-import org.springframework.lang.Nullable;
-
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -26,8 +22,6 @@ public class Car {
     @Column(name = "f_release_date")
     @Temporal(TemporalType.DATE)
     private Date releaseDate;
-//    @ManyToOne
-//    private Client client;
     @ManyToMany
     private List<Region> regions;
 
