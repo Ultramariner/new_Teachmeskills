@@ -23,10 +23,4 @@ public class Book extends RepresentationModel<Book> {
     private String name;
     private String author;
     private Date date;
-
-    public Book(String name, String author) {
-        this.name = name;
-        this.author = author;
-        this.date = new Date();
-    }
 }

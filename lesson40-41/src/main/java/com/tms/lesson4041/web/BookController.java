@@ -39,12 +39,12 @@ public class BookController {
 
     @PostMapping("/{name}/{author}")
     public void addBook(@PathVariable String name, @PathVariable String author) {
-        bookRepository.addBook(new Book(name, author));
+        bookRepository.add(new Book(name, author));
     }
 
     @PostMapping("/{id}/{name}/{author}")
     public void updateBook(@PathVariable Long id, @PathVariable String name, @PathVariable String author) {
-        bookRepository.updateBook(new Book(id, name, author, new Date()));
+        bookRepository.update(new Book(id, name, author, new Date()));
     }
 
     @DeleteMapping("/{id}")
@@ -53,6 +53,6 @@ public class BookController {
             @ApiResponse(responseCode = "500", description = "no with such id")
     })
     public void deleteBook(@PathVariable Long id) {
-        bookRepository.deleteBookById(id);
+        bookRepository.delete(id);
     }
 }

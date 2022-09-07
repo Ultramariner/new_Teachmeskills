@@ -6,9 +6,9 @@ import java.util.List;
 
 public interface BookRepository {
 
-    void addBook(Book book);
-    void updateBook(Book book);
-    void deleteBookById(Long id);
+    void add(Book book);
+    void update(Book book);
+    void delete(Long id);
 
     Book getBookById(Long id);
     List<Book> getAllBooks();

@@ -17,7 +17,7 @@ public class BookRepositoryImpl implements BookRepository {
     private SessionFactory factory;
 
     @Override
-    public void addBook(Book book) {
+    public void add(Book book) {
         Session session = factory.openSession();
         Transaction transaction = session.beginTransaction();
         session.save(book);
@@ -26,7 +26,7 @@ public class BookRepositoryImpl implements BookRepository {
     }
 
     @Override
-    public void updateBook(Book book) {
+    public void update(Book book) {
         Session session = factory.openSession();
         Transaction transaction = session.beginTransaction();
         session.update(book);
@@ -35,7 +35,7 @@ public class BookRepositoryImpl implements BookRepository {
     }
 
     @Override
-    public void deleteBookById(Long id) {
+    public void delete(Long id) {
         Session session = factory.openSession();
         Transaction transaction = session.beginTransaction();
         Object object = session.load(Book.class, id);
