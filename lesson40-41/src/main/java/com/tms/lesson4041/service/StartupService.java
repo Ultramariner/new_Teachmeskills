@@ -16,6 +16,7 @@ public class StartupService {
     @PostConstruct
     public void init() {
 
+
         Book book = new Book(1, "First", "Auth", new Date());
         bookRepository.add(book);
     }

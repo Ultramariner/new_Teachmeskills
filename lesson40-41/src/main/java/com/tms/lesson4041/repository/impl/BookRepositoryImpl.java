@@ -14,49 +14,38 @@ import java.util.List;
 public class BookRepositoryImpl implements BookRepository {
 
     @Autowired
-    private SessionFactory factory;
+    private Session session;
+    @Autowired
+    private Transaction transaction;
 
     @Override
     public void add(Book book) {
-        Session session = factory.openSession();
-        Transaction transaction = session.beginTransaction();
         session.save(book);
         transaction.commit();
-        session.close();
     }
 
     @Override
     public void update(Book book) {
-        Session session = factory.openSession();
-        Transaction transaction = session.beginTransaction();
         session.update(book);
         transaction.commit();
-        session.close();
     }
 
     @Override
     public void delete(Long id) {
-        Session session = factory.openSession();
-        Transaction transaction = session.beginTransaction();
         Object object = session.load(Book.class, id);
         session.delete(object);
         transaction.commit();
-        session.close();
     }
 
     @Override
     public Book getBookById(Long id) {
-        Session session = factory.openSession();
         Book book = session.get(Book.class, id);
-        session.close();
         return book;
     }
 
     @Override
     public List<Book> getAllBooks() {
-        Session session = factory.openSession();
         List<Book> list = session.createCriteria(Book.class).list();
-        session.close();
         return list;
     }
 }

@@ -2,7 +2,9 @@ package com.tms.lesson4041.config;
 
 import com.tms.lesson4041.dto.Book;
 import org.hibernate.HibernateException;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -37,5 +39,15 @@ public class DatabaseConfig {
     @Bean
     SessionFactory factory(Configuration configuration) throws HibernateException {
         return configuration.buildSessionFactory();
+    }
+
+    @Bean
+    Session session() {
+        return factory(configuration()).openSession();
+    }
+
+    @Bean
+    Transaction transaction() {
+        return session().beginTransaction();
     }
 }
