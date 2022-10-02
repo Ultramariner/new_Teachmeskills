@@ -73,7 +73,7 @@ public class BookController {
             @ApiResponse(responseCode = "200", description = "book updated", content = @Content(schema = @Schema(implementation = Book.class))),
             @ApiResponse(responseCode = "500", description = "no book with such id", content = @Content(schema = @Schema(implementation = Book.class)))
     })
-    public ResponseEntity<Book> updateBook(@RequestParam String id, @RequestParam String name, @RequestParam String author) {
+    public ResponseEntity<Book> updateBook(@RequestParam Long id, @RequestParam String name, @RequestParam String author) {
         Book book = new Book(id, name, author, new Date());
         bookRepository.update(book);
         return ResponseEntity.ok(book);

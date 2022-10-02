@@ -1,9 +1,8 @@
 package com.tms.lesson4041.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.hateoas.RepresentationModel;
+import org.springframework.lang.Nullable;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,6 +13,7 @@ import java.util.Date;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+//@RequiredArgsConstructor    почему-то не коздаются конструкторы
 @Entity
 public class Book extends RepresentationModel<Book> {
 
@@ -23,4 +23,15 @@ public class Book extends RepresentationModel<Book> {
     private String name;
     private String author;
     private Date date;
+
+    public Book(String name, String author) {
+        this.name = name;
+        this.author = author;
+    }
+
+    public Book(String name, String author, Date date) {
+        this.name = name;
+        this.author = author;
+        this.date = date;
+    }
 }

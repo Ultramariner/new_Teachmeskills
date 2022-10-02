@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import javax.annotation.PostConstruct;
 
 @Service
-@RequiredArgsConstructor
 public class StartupService {
 
     @Autowired
@@ -16,7 +15,6 @@ public class StartupService {
 
     @PostConstruct
     public void init() {
-
 
         Book book = new Book("First", "Auth");
         Book book2 = new Book("Second", "Auth2");
